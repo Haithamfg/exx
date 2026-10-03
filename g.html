@@ -1,0 +1,3274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ENG HAITHM | منصة الاختبارات</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#050816;
+    --bg2:#080d1d;
+    --card:rgba(14,21,42,.78);
+    --card2:#0f1830;
+
+    --primary:#6c63ff;
+    --primary2:#8b5cf6;
+    --blue:#3b82f6;
+    --cyan:#22d3ee;
+    --green:#22c55e;
+    --red:#ef4444;
+    --yellow:#fbbf24;
+
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --border:rgba(255,255,255,.09);
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    font-family:"Cairo",sans-serif;
+    color:var(--text);
+    background:
+        radial-gradient(circle at 10% 10%,rgba(108,99,255,.18),transparent 30%),
+        radial-gradient(circle at 90% 15%,rgba(34,211,238,.12),transparent 30%),
+        radial-gradient(circle at 50% 100%,rgba(139,92,246,.1),transparent 35%),
+        var(--bg);
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:
+        linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
+    background-size:45px 45px;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    height:76px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 6%;
+
+    background:rgba(5,8,22,.76);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border-bottom:1px solid var(--border);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    cursor:pointer;
+}
+
+.brand-icon{
+    width:45px;
+    height:45px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--blue),
+        var(--cyan)
+    );
+
+    box-shadow:0 0 25px rgba(108,99,255,.35);
+
+    font-size:22px;
+}
+
+.brand-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.25;
+}
+
+.brand-text strong{
+    font-size:17px;
+}
+
+.brand-text span{
+    color:#75839c;
+    font-size:10px;
+}
+
+.header-badge{
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    border:1px solid var(--border);
+
+    background:rgba(255,255,255,.04);
+
+    color:#cbd5e1;
+
+    font-size:12px;
+}
+
+/* ================= CONTAINER ================= */
+
+.container{
+    width:min(1150px,92%);
+    margin:auto;
+
+    padding:40px 0 80px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    padding:40px 10px 30px;
+
+    text-align:center;
+
+    animation:fadeUp .7s ease;
+}
+
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+
+    padding:7px 15px;
+
+    border-radius:30px;
+
+    background:rgba(108,99,255,.1);
+    border:1px solid rgba(108,99,255,.25);
+
+    color:#b9b5ff;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.hero h1{
+    margin-top:18px;
+
+    font-size:clamp(32px,6vw,60px);
+    line-height:1.3;
+
+    font-weight:900;
+
+    letter-spacing:-1px;
+}
+
+.gradient{
+    background:linear-gradient(
+        90deg,
+        #7c8fff,
+        #b47cff,
+        #36d9f1
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+}
+
+.hero p{
+    max-width:650px;
+
+    margin:15px auto 0;
+
+    color:var(--muted);
+
+    line-height:2;
+    font-size:15px;
+}
+
+/* ================= SEARCH ================= */
+
+.search-box{
+    max-width:720px;
+
+    margin:10px auto 35px;
+
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    height:60px;
+
+    padding:0 55px 0 20px;
+
+    border-radius:18px;
+
+    border:1px solid var(--border);
+
+    background:rgba(15,24,48,.76);
+
+    color:white;
+
+    font-family:inherit;
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+}
+
+.search-box input:focus{
+    border-color:rgba(108,99,255,.8);
+
+    box-shadow:
+        0 0 0 4px rgba(108,99,255,.1),
+        0 12px 35px rgba(0,0,0,.18);
+}
+
+.search-icon{
+    position:absolute;
+
+    right:20px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    font-size:20px;
+}
+
+/* ================= EXAMS GRID ================= */
+
+.section-heading{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:18px;
+}
+
+.section-heading h2{
+    font-size:22px;
+}
+
+.section-heading span{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.exams-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(280px,1fr));
+
+    gap:18px;
+}
+
+.exam-card{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:25px;
+
+    border-radius:24px;
+
+    background:rgba(14,21,42,.78);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid var(--border);
+
+    box-shadow:0 20px 55px rgba(0,0,0,.19);
+
+    transition:.3s;
+}
+
+.exam-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    top:-75px;
+    left:-65px;
+
+    background:rgba(108,99,255,.14);
+
+    filter:blur(10px);
+}
+
+.exam-card:hover{
+    transform:translateY(-6px);
+
+    border-color:rgba(108,99,255,.4);
+
+    box-shadow:0 25px 70px rgba(0,0,0,.3);
+}
+
+.exam-card-icon{
+    width:55px;
+    height:55px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:17px;
+
+    background:linear-gradient(
+        135deg,
+        rgba(108,99,255,.22),
+        rgba(34,211,238,.15)
+    );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    font-size:28px;
+
+    margin-bottom:18px;
+}
+
+.exam-subject{
+    color:#8faaff;
+
+    font-size:12px;
+    font-weight:800;
+
+    margin-bottom:5px;
+}
+
+.exam-title{
+    font-size:20px;
+    line-height:1.7;
+
+    font-weight:900;
+
+    margin-bottom:10px;
+}
+
+.exam-description{
+    color:var(--muted);
+
+    line-height:1.8;
+
+    font-size:13px;
+
+    min-height:48px;
+}
+
+.exam-info{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:7px;
+
+    margin:20px 0;
+}
+
+.exam-info div{
+    padding:10px 5px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    text-align:center;
+}
+
+.exam-info strong{
+    display:block;
+
+    font-size:13px;
+}
+
+.exam-info span{
+    color:var(--muted);
+
+    font-size:9px;
+}
+
+.start-exam-btn{
+    width:100%;
+    min-height:50px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-family:inherit;
+    font-weight:900;
+
+    background:linear-gradient(
+        135deg,
+        #566cff,
+        #8b5cf6
+    );
+
+    box-shadow:0 10px 25px rgba(108,99,255,.2);
+
+    transition:.25s;
+}
+
+.start-exam-btn:hover{
+    transform:translateY(-2px);
+
+    box-shadow:0 15px 30px rgba(108,99,255,.3);
+}
+
+/* ================= GLASS ================= */
+
+.glass{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:27px;
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.3),
+        inset 0 1px rgba(255,255,255,.03);
+}
+
+/* ================= NAME SCREEN ================= */
+
+.name-screen{
+    display:none;
+
+    max-width:780px;
+
+    margin:auto;
+}
+
+.name-card{
+    padding:40px;
+}
+
+.selected-exam{
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    margin-bottom:28px;
+
+    background:rgba(108,99,255,.07);
+
+    border:1px solid rgba(108,99,255,.18);
+}
+
+.selected-exam-icon{
+    width:55px;
+    height:55px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:17px;
+
+    flex-shrink:0;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+
+    font-size:27px;
+}
+
+.selected-exam h3{
+    font-size:17px;
+}
+
+.selected-exam p{
+    color:var(--muted);
+
+    font-size:12px;
+
+    margin-top:3px;
+}
+
+.label{
+    display:block;
+
+    margin-bottom:9px;
+
+    color:#cbd5e1;
+
+    font-weight:700;
+    font-size:13px;
+}
+
+.name-input{
+    width:100%;
+    height:58px;
+
+    padding:0 18px;
+
+    border-radius:16px;
+
+    border:1px solid var(--border);
+
+    background:rgba(0,0,0,.18);
+
+    color:white;
+
+    outline:none;
+
+    font-family:inherit;
+    font-size:15px;
+
+    transition:.3s;
+}
+
+.name-input:focus{
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(108,99,255,.1);
+}
+
+.main-btn{
+    width:100%;
+    min-height:56px;
+
+    margin-top:15px;
+
+    border:0;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-family:inherit;
+    font-weight:900;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #536dff,
+        #8b5cf6
+    );
+
+    transition:.25s;
+}
+
+.main-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* ================= QUIZ ================= */
+
+.quiz-screen{
+    display:none;
+}
+
+.quiz-header{
+    display:flex;
+
+    gap:15px;
+
+    align-items:center;
+
+    margin-bottom:18px;
+}
+
+.progress-area{
+    flex:1;
+}
+
+.progress-info{
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#a5b4cc;
+
+    font-size:12px;
+
+    margin-bottom:8px;
+}
+
+.progress{
+    height:8px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:#172138;
+}
+
+.progress-bar{
+    height:100%;
+
+    width:0;
+
+    border-radius:20px;
+
+    background:linear-gradient(
+        90deg,
+        var(--blue),
+        var(--primary2),
+        var(--cyan)
+    );
+
+    transition:.4s;
+}
+
+.timer{
+    min-width:110px;
+
+    padding:10px;
+
+    text-align:center;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid var(--border);
+
+    font-weight:900;
+}
+
+.timer.warning{
+    color:#facc15;
+
+    border-color:rgba(250,204,21,.4);
+}
+
+.timer.danger{
+    color:#fb7185;
+
+    border-color:rgba(251,113,133,.45);
+
+    animation:pulse 1s infinite;
+}
+
+.question-card{
+    padding:35px;
+}
+
+.question-number{
+    display:inline-flex;
+
+    padding:7px 14px;
+
+    border-radius:30px;
+
+    margin-bottom:18px;
+
+    background:rgba(108,99,255,.1);
+
+    color:#9fa9ff;
+
+    border:1px solid rgba(108,99,255,.2);
+
+    font-size:11px;
+    font-weight:800;
+}
+
+.question-text{
+    margin-bottom:25px;
+
+    line-height:2;
+
+    font-size:22px;
+    font-weight:900;
+}
+
+.options{
+    display:grid;
+
+    gap:12px;
+}
+
+.option{
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    min-height:64px;
+
+    padding:15px;
+
+    border-radius:17px;
+
+    border:1px solid var(--border);
+
+    background:rgba(255,255,255,.025);
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.option:hover{
+    transform:translateX(-3px);
+
+    border-color:rgba(108,99,255,.5);
+
+    background:rgba(108,99,255,.06);
+}
+
+.option.selected{
+    border-color:var(--primary);
+
+    background:rgba(108,99,255,.12);
+
+    box-shadow:0 0 25px rgba(108,99,255,.08);
+}
+
+.option-letter{
+    width:40px;
+    height:40px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:#18233b;
+
+    color:#becbe0;
+
+    font-weight:900;
+}
+
+.option.selected .option-letter{
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary2)
+    );
+}
+
+.quiz-actions{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+    margin-top:30px;
+}
+
+.secondary-btn,
+.next-btn{
+    min-height:52px;
+
+    padding:0 26px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-family:inherit;
+    font-weight:900;
+
+    transition:.2s;
+}
+
+.secondary-btn{
+    background:#121d32;
+
+    border:1px solid var(--border);
+}
+
+.next-btn{
+    border:0;
+
+    background:linear-gradient(
+        135deg,
+        var(--blue),
+        var(--primary2)
+    );
+}
+
+.secondary-btn:hover,
+.next-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* ================= RESULT ================= */
+
+.result-screen{
+    display:none;
+}
+
+.result-card{
+    padding:45px;
+
+    text-align:center;
+}
+
+.result-icon{
+    width:95px;
+    height:95px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:28px;
+
+    font-size:45px;
+
+    background:linear-gradient(
+        135deg,
+        rgba(34,197,94,.15),
+        rgba(34,211,238,.12)
+    );
+
+    border:1px solid rgba(34,197,94,.18);
+}
+
+.result-title{
+    margin-top:18px;
+
+    font-size:32px;
+}
+
+.result-score{
+    margin:22px 0 5px;
+
+    font-size:72px;
+    line-height:1;
+
+    font-weight:900;
+
+    background:linear-gradient(
+        90deg,
+        #5fa3ff,
+        #b079ff,
+        #40dfef
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+}
+
+.result-details{
+    color:var(--muted);
+}
+
+.result-message{
+    max-width:620px;
+
+    margin:20px auto;
+
+    line-height:2;
+
+    color:#cbd5e1;
+}
+
+.result-stats{
+    max-width:600px;
+
+    margin:25px auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+}
+
+.stat{
+    padding:15px;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid var(--border);
+}
+
+.stat strong{
+    display:block;
+
+    font-size:21px;
+}
+
+.stat span{
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+.result-buttons{
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:25px;
+}
+
+.result-buttons button{
+    min-height:50px;
+
+    padding:0 22px;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-family:inherit;
+    font-weight:800;
+}
+
+/* ================= REVIEW ================= */
+
+.review-screen{
+    display:none;
+}
+
+.review-card{
+    padding:32px;
+}
+
+.review-heading{
+    font-size:25px;
+
+    margin-bottom:20px;
+}
+
+.review-item{
+    margin-bottom:13px;
+
+    padding:20px;
+
+    border-radius:17px;
+
+    background:rgba(255,255,255,.025);
+
+    border:1px solid var(--border);
+}
+
+.review-item.correct{
+    border-right:4px solid var(--green);
+}
+
+.review-item.wrong{
+    border-right:4px solid var(--red);
+}
+
+.review-question{
+    line-height:1.8;
+
+    font-weight:800;
+
+    margin-bottom:10px;
+}
+
+.review-answer{
+    font-size:13px;
+
+    line-height:1.8;
+
+    margin-top:5px;
+}
+
+.correct-text{
+    color:#4ade80;
+}
+
+.wrong-text{
+    color:#fb7185;
+}
+
+/* ================= CERTIFICATE ================= */
+
+.certificate-screen{
+    display:none;
+}
+
+.certificate{
+    position:relative;
+
+    overflow:hidden;
+
+    max-width:950px;
+    min-height:620px;
+
+    margin:auto;
+
+    padding:60px 50px;
+
+    text-align:center;
+
+    color:#15243b;
+
+    background:
+        radial-gradient(circle at top left,rgba(201,159,58,.15),transparent 30%),
+        radial-gradient(circle at bottom right,rgba(201,159,58,.12),transparent 30%),
+        #fffdf8;
+
+    border:13px double #b58d35;
+
+    box-shadow:0 30px 80px rgba(0,0,0,.4);
+}
+
+.certificate::before{
+    content:"";
+
+    position:absolute;
+
+    inset:12px;
+
+    border:1px solid #d9bd70;
+
+    pointer-events:none;
+}
+
+.certificate::after{
+    content:"ENG HAITHM";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-18deg);
+
+    color:rgba(181,141,53,.05);
+
+    font-size:80px;
+    font-weight:900;
+
+    white-space:nowrap;
+}
+
+.cert-logo{
+    position:relative;
+    z-index:2;
+
+    font-size:60px;
+}
+
+.certificate h1{
+    position:relative;
+    z-index:2;
+
+    margin-top:5px;
+
+    color:#997328;
+
+    font-size:45px;
+}
+
+.cert-en{
+    position:relative;
+    z-index:2;
+
+    color:#718096;
+}
+
+.cert-text{
+    position:relative;
+    z-index:2;
+
+    margin-top:27px;
+}
+
+.cert-name{
+    position:relative;
+    z-index:2;
+
+    display:inline-block;
+
+    margin:15px 0;
+
+    padding:0 50px 10px;
+
+    border-bottom:2px solid #bd9844;
+
+    color:#174e82;
+
+    font-size:37px;
+    font-weight:900;
+}
+
+.cert-course{
+    position:relative;
+    z-index:2;
+
+    color:#293d5b;
+
+    font-size:21px;
+    font-weight:800;
+
+    line-height:1.8;
+}
+
+.cert-score{
+    position:relative;
+    z-index:2;
+
+    margin-top:18px;
+
+    color:#1f8550;
+
+    font-weight:900;
+
+    font-size:20px;
+}
+
+.cert-date{
+    position:relative;
+    z-index:2;
+
+    margin-top:8px;
+
+    color:#6b7280;
+}
+
+.cert-footer{
+    position:relative;
+    z-index:2;
+
+    margin-top:55px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-end;
+}
+
+.sign{
+    width:200px;
+
+    color:#374151;
+}
+
+.sign-line{
+    margin-top:30px;
+
+    border-top:1px solid #777;
+}
+
+.print-actions{
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:20px;
+}
+
+/* ================= EMPTY ================= */
+
+.no-exams{
+    display:none;
+
+    padding:35px;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    text-align:center;
+
+    color:var(--muted);
+
+    background:rgba(255,255,255,.025);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+    .header{
+        padding:0 4%;
+    }
+
+    .header-badge{
+        display:none;
+    }
+
+    .container{
+        padding-top:20px;
+    }
+
+    .hero{
+        padding-top:25px;
+    }
+
+    .hero p{
+        font-size:13px;
+    }
+
+    .exams-grid{
+        grid-template-columns:1fr;
+    }
+
+    .name-card,
+    .question-card,
+    .result-card,
+    .review-card{
+        padding:22px;
+    }
+
+    .quiz-header{
+        flex-direction:column;
+
+        align-items:stretch;
+    }
+
+    .timer{
+        width:100%;
+    }
+
+    .question-text{
+        font-size:18px;
+    }
+
+    .quiz-actions{
+        flex-direction:column-reverse;
+    }
+
+    .quiz-actions button{
+        width:100%;
+    }
+
+    .result-score{
+        font-size:58px;
+    }
+
+    .result-stats{
+        grid-template-columns:1fr;
+    }
+
+    .certificate{
+        padding:40px 18px;
+    }
+
+    .certificate h1{
+        font-size:32px;
+    }
+
+    .cert-name{
+        font-size:27px;
+
+        padding:0 15px 10px;
+    }
+
+    .cert-course{
+        font-size:17px;
+    }
+
+    .cert-footer{
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:25px;
+    }
+}
+
+/* ================= PRINT ================= */
+
+@media print{
+
+    @page{
+        size:A4 landscape;
+        margin:0;
+    }
+
+    body{
+        background:white;
+    }
+
+    body *{
+        visibility:hidden !important;
+    }
+
+    #certificateScreen,
+    #certificateScreen *{
+        visibility:visible !important;
+    }
+
+    #certificateScreen{
+        position:absolute;
+
+        inset:0;
+
+        display:block !important;
+    }
+
+    .certificate{
+        width:100vw;
+        height:100vh;
+
+        max-width:none;
+        min-height:100vh;
+
+        box-shadow:none;
+    }
+
+    .print-actions{
+        display:none !important;
+    }
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes pulse{
+    50%{
+        opacity:.5;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="brand" onclick="goHome()">
+
+        <div class="brand-icon">
+            🎓
+        </div>
+
+        <div class="brand-text">
+            <strong>ENG HAITHM</strong>
+            <span>QUIZ PLATFORM</span>
+        </div>
+
+    </div>
+
+    <div class="header-badge">
+        منصة الاختبارات التعليمية
+    </div>
+
+</header>
+
+<main class="container">
+
+<!-- ================= HOME ================= -->
+
+<section id="homeScreen">
+
+    <div class="hero">
+
+        <div class="hero-badge">
+            ✨ اختبر معلوماتك وطور مستواك
+        </div>
+
+        <h1>
+            منصة
+            <span class="gradient">
+                الاختبارات الذكية
+            </span>
+        </h1>
+
+        <p>
+            اختر الاختبار الذي تريد حله، أجب عن الأسئلة،
+            واعرف نتيجتك فوراً مع إمكانية مراجعة إجاباتك
+            والحصول على شهادة عند النجاح.
+        </p>
+
+    </div>
+
+    <div class="search-box">
+
+        <span class="search-icon">🔍</span>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="ابحث عن اختبار أو مادة..."
+            oninput="renderExams()"
+        >
+
+    </div>
+
+    <div class="section-heading">
+
+        <h2>
+            📚 الاختبارات المتاحة
+        </h2>
+
+        <span id="examCount">
+            0 اختبار
+        </span>
+
+    </div>
+
+    <div
+        class="exams-grid"
+        id="examsGrid">
+    </div>
+
+    <div
+        class="no-exams"
+        id="noExams">
+
+        لا توجد اختبارات مطابقة للبحث.
+
+    </div>
+
+</section>
+
+<!-- ================= NAME ================= -->
+
+<section
+    class="name-screen"
+    id="nameScreen">
+
+    <div class="glass name-card">
+
+        <div class="selected-exam">
+
+            <div
+                class="selected-exam-icon"
+                id="selectedExamIcon">
+                📚
+            </div>
+
+            <div>
+
+                <h3 id="selectedExamTitle">
+                    عنوان الاختبار
+                </h3>
+
+                <p id="selectedExamInfo">
+                    المادة
+                </p>
+
+            </div>
+
+        </div>
+
+        <h2>
+            جاهز تبدأ؟ 🚀
+        </h2>
+
+        <p style="
+            color:var(--muted);
+            margin:7px 0 25px;
+            line-height:1.8;
+        ">
+            اكتب اسمك ثم اضغط بدء الاختبار.
+        </p>
+
+        <label class="label">
+            اسم الطالب
+        </label>
+
+        <input
+            id="studentName"
+            class="name-input"
+            type="text"
+            placeholder="اكتب اسمك بالكامل"
+            autocomplete="off"
+        >
+
+        <button
+            class="main-btn"
+            onclick="startQuiz()">
+            🚀 بدء الاختبار
+        </button>
+
+        <button
+            class="secondary-btn"
+            style="
+                width:100%;
+                margin-top:10px;
+            "
+            onclick="goHome()">
+            العودة للاختبارات
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ================= QUIZ ================= -->
+
+<section
+    class="quiz-screen"
+    id="quizScreen">
+
+    <div class="quiz-header">
+
+        <div class="progress-area">
+
+            <div class="progress-info">
+
+                <span id="progressText">
+                    السؤال 1 من 1
+                </span>
+
+                <span id="progressPercent">
+                    0%
+                </span>
+
+            </div>
+
+            <div class="progress">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div
+            class="timer"
+            id="timer">
+            ⏱️ 00:00
+        </div>
+
+    </div>
+
+    <div class="glass question-card">
+
+        <div
+            class="question-number"
+            id="questionNumber">
+            السؤال 01
+        </div>
+
+        <div
+            class="question-text"
+            id="questionText">
+        </div>
+
+        <div
+            class="options"
+            id="options">
+        </div>
+
+        <div class="quiz-actions">
+
+            <button
+                class="secondary-btn"
+                onclick="previousQuestion()">
+                → السابق
+            </button>
+
+            <button
+                class="next-btn"
+                id="nextButton"
+                onclick="nextQuestion()">
+                التالي ←
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= RESULT ================= -->
+
+<section
+    class="result-screen"
+    id="resultScreen">
+
+    <div class="glass result-card">
+
+        <div
+            class="result-icon"
+            id="resultIcon">
+            🏆
+        </div>
+
+        <h2
+            class="result-title"
+            id="resultTitle">
+            النتيجة
+        </h2>
+
+        <div
+            class="result-score"
+            id="scorePercent">
+            0%
+        </div>
+
+        <div
+            class="result-details"
+            id="scoreText">
+        </div>
+
+        <div
+            class="result-message"
+            id="resultMessage">
+        </div>
+
+        <div class="result-stats">
+
+            <div class="stat">
+
+                <strong
+                    id="correctCount">
+                    0
+                </strong>
+
+                <span>
+                    إجابة صحيحة
+                </span>
+
+            </div>
+
+            <div class="stat">
+
+                <strong
+                    id="wrongCount">
+                    0
+                </strong>
+
+                <span>
+                    إجابة خاطئة
+                </span>
+
+            </div>
+
+            <div class="stat">
+
+                <strong
+                    id="finalPercentage">
+                    0%
+                </strong>
+
+                <span>
+                    النسبة النهائية
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="result-buttons">
+
+            <button
+                class="secondary-btn"
+                onclick="showReview()">
+                📋 مراجعة الإجابات
+            </button>
+
+            <button
+                class="secondary-btn"
+                onclick="restartQuiz()">
+                🔄 إعادة الاختبار
+            </button>
+
+            <button
+                class="next-btn"
+                id="certificateButton"
+                onclick="showCertificate()">
+                🏆 الشهادة
+            </button>
+
+            <button
+                class="secondary-btn"
+                onclick="goHome()">
+                🏠 اختبارات أخرى
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= REVIEW ================= -->
+
+<section
+    class="review-screen"
+    id="reviewScreen">
+
+    <div class="glass review-card">
+
+        <h2 class="review-heading">
+            📋 مراجعة الإجابات
+        </h2>
+
+        <div id="reviewContainer">
+        </div>
+
+        <button
+            class="main-btn"
+            onclick="backToResult()">
+            العودة إلى النتيجة
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ================= CERTIFICATE ================= -->
+
+<section
+    class="certificate-screen"
+    id="certificateScreen">
+
+    <div class="certificate">
+
+        <div class="cert-logo">
+            🏆
+        </div>
+
+        <h1>
+            شهادة اجتياز
+        </h1>
+
+        <div class="cert-en">
+            CERTIFICATE OF ACHIEVEMENT
+        </div>
+
+        <div class="cert-text">
+            تشهد منصة ENG HAITHM بأن الطالب
+        </div>
+
+        <div
+            class="cert-name"
+            id="certificateName">
+        </div>
+
+        <div
+            class="cert-course"
+            id="certificateCourse">
+        </div>
+
+        <div
+            class="cert-score"
+            id="certificateScore">
+        </div>
+
+        <div
+            class="cert-date"
+            id="certificateDate">
+        </div>
+
+        <div class="cert-footer">
+
+            <div class="sign">
+                إدارة المنصة
+
+                <div class="sign-line">
+                </div>
+            </div>
+
+            <div style="font-size:45px">
+                🎓
+            </div>
+
+            <div class="sign">
+                مدرس المادة
+
+                <div class="sign-line">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="print-actions">
+
+        <button
+            class="next-btn"
+            onclick="window.print()">
+            🖨️ حفظ / طباعة PDF
+        </button>
+
+        <button
+            class="secondary-btn"
+            onclick="backToResult()">
+            العودة
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+<script>
+
+/* =========================================================
+   هنا فقط تضيف الامتحانات الجديدة
+   ========================================================= */
+
+const EXAMS = [
+
+{
+    id:"egyptian-state",
+
+    icon:"🏛️",
+
+    subject:"التاريخ",
+
+    grade:"الصف الثاني الثانوي",
+
+    title:"بناء الدولة المصرية",
+
+    description:
+    "اختبار شامل على درس بناء الدولة المصرية وأركان الدولة وتطور الدولة المصرية.",
+
+    duration:30,
+
+    passPercent:60,
+
+    questions:[
+
+        {
+            q:"الإطار الذي ينظم حياة الأفراد ويحافظ على الأمن والاستقرار ويضمن ممارسة الحقوق والواجبات هو:",
+            options:[
+                "الحكومة",
+                "الشعب",
+                "الدولة",
+                "السيادة"
+            ],
+            answer:2
+        },
+
+        {
+            q:"من الأركان الأساسية لقيام الدولة والمسؤول عن إدارة شؤونها داخلياً وخارجياً:",
+            options:[
+                "السلطة الحاكمة",
+                "الشعب",
+                "الحيز الجغرافي",
+                "السيادة"
+            ],
+            answer:0
+        },
+
+        {
+            q:"لا يمكن لأي دولة أن تقوم أو تؤدي وظائفها بصورة كاملة إلا بـ:",
+            options:[
+                "توفر أحدث الأسلحة",
+                "اجتماع واكتمال كافة أركانها الأربعة",
+                "وجود نهر النيل",
+                "وجود جيش قوي فقط"
+            ],
+            answer:1
+        },
+
+        {
+            q:"كلمة السر وركيزة مفهوم الشعب في الدولة هي:",
+            options:[
+                "الموقع الجغرافي",
+                "جنسية الدولة",
+                "الدستور والقوانين",
+                "السيادة الخارجية"
+            ],
+            answer:1
+        },
+
+        {
+            q:"يُعد الشعب هو القوة الحقيقية للدولة لأنه من خلاله يتحقق:",
+            options:[
+                "بناء الأهرامات والمعابد",
+                "الاستقرار والتنمية وحماية الوطن",
+                "عقد المعاهدات الدولية",
+                "سن القوانين التشريعية"
+            ],
+            answer:1
+        },
+
+        {
+            q:"يتكون الحيز الجغرافي للدولة من أربعة عناصر وهي:",
+            options:[
+                "اليابس والمياه الإقليمية والمجال الجوي",
+                "اليابس والمجال الجوي فقط",
+                "نهر النيل والبحر المتوسط والأحمر",
+                "الحدود السياسية والسيادة والسلطة"
+            ],
+            answer:0
+        },
+
+        {
+            q:"الفضاء الذي يعلو اليابس والمياه الإقليمية وتمارس الدولة سيادتها عليه يسمى:",
+            options:[
+                "المياه الإقليمية",
+                "المجال الجوي",
+                "الحيز البشري",
+                "الحدود الطبيعية"
+            ],
+            answer:1
+        },
+
+        {
+            q:"المساحات البحرية التابعة للدولة والتي تمارس عليها سيادتها وتحمي ثرواتها هي:",
+            options:[
+                "اليابس",
+                "المياه الإقليمية",
+                "المجال الجوي",
+                "الصحاري الشرقية والغربية"
+            ],
+            answer:1
+        },
+
+        {
+            q:"المشاركة السياسية للشعب تظهر من خلال:",
+            options:[
+                "دفع الضرائب والتزام القانون",
+                "انتخاب ممثلي الشعب والمشاركة في الانتخابات",
+                "احترام التراث والثقافة",
+                "التعاون مع مؤسسات الدولة"
+            ],
+            answer:1
+        },
+
+        {
+            q:"الحفاظ على الهوية الوطنية من أدوار الشعب ويمثل في:",
+            options:[
+                "العمل والإنتاج",
+                "احترام التراث والثقافة ودعم الانتماء",
+                "المشاركة في الانتخابات",
+                "التعاون مع مؤسسات الدولة"
+            ],
+            answer:1
+        },
+
+        {
+            q:"السلطة المختصة بسن القوانين والرقابة على السلطة التنفيذية هي:",
+            options:[
+                "السلطة القضائية",
+                "السلطة التشريعية (البرلمان)",
+                "السلطة التنفيذية",
+                "القوات المسلحة"
+            ],
+            answer:1
+        },
+
+        {
+            q:"تختص السلطة التنفيذية (الحكومة) بـ:",
+            options:[
+                "الفصل في المنازعات",
+                "تنفيذ القوانين وإدارة شؤون الدولة",
+                "إصدار الأحكام القضائية",
+                "سن الدستور والقوانين"
+            ],
+            answer:1
+        },
+
+        {
+            q:"المؤسسة المسؤولة عن تحقيق العدالة والفصل في المنازعات وإصدار الأحكام هي:",
+            options:[
+                "البرلمان",
+                "الحكومة",
+                "السلطة القضائية (القضاء)",
+                "رئيس الجمهورية"
+            ],
+            answer:2
+        },
+
+        {
+            q:"يعني مفهوم السيادة الداخلية:",
+            options:[
+                "إبرام المعاهدات الدولية",
+                "سن القوانين وحفظ الأمن وإدارة شؤون المواطنين",
+                "التمثيل في المنظمات الدولية",
+                "الاستقلال عن الدول الخارجية"
+            ],
+            answer:1
+        },
+
+        {
+            q:"إبرام المعاهدات والتمثيل في المنظمات الدولية وإقامة العلاقات من مظاهر:",
+            options:[
+                "السيادة الداخلية",
+                "السيادة الخارجية",
+                "السلطة التشريعية",
+                "المجال الجوي"
+            ],
+            answer:1
+        },
+
+        {
+            q:"العلاقة بين قوة مؤسسات الدولة وممارسة سيادتها هي علاقة:",
+            options:[
+                "طردية",
+                "عكسية",
+                "لا توجد بينهما علاقة",
+                "تناقضية"
+            ],
+            answer:0
+        },
+
+        {
+            q:"من المقومات الطبيعية التي ساعدت على نشأة الدولة المصرية واستقرارها:",
+            options:[
+                "نهر النيل، الموقع الجغرافي، الحدود الطبيعية، الموارد",
+                "الجيش، الشعب، الحكومة، السيادة",
+                "الانتخابات، الدستور، القوانين، الموازنة",
+                "الأهرامات، المعابد، الدواوين، البعثات"
+            ],
+            answer:0
+        },
+
+        {
+            q:"تمثلت الحدود الطبيعية لمصر جنوباً في:",
+            options:[
+                "البحر المتوسط",
+                "الصحاري الشرقية والغربية",
+                "الشلالات (الجنادل)",
+                "البحر الأحمر"
+            ],
+            answer:2
+        },
+
+        {
+            q:"لعبت الحدود الطبيعية دوراً هاماً لمصر عبر التاريخ حيث أدت إلى:",
+            options:[
+                "فرض العزلة على الشعب",
+                "حماية مصر من الأخطار والغزوات وتوفير الأمن",
+                "منع التواصل مع دول العالم",
+                "إضعاف سلطة الحكومة المركزية"
+            ],
+            answer:1
+        },
+
+        {
+            q:"يقع موقع مصر الجغرافي المتميز في قلب العالم القديم بين ثلاث قارات هي:",
+            options:[
+                "آسيا وأوروبا وأمريكا",
+                "آسيا وأفريقيا وأوروبا",
+                "أفريقيا وأستراليا وآسيا",
+                "أمريكا الشمالية وأوروبا وآسيا"
+            ],
+            answer:1
+        },
+
+        {
+            q:"يُعد نهر النيل أساس قيام الدولة المصرية القديمة لأنه ساعد على:",
+            options:[
+                "وفرة المياه والزراعة وقيام حكومة مركزية لتنظيم الري",
+                "بناء الأسطول البحري وتنشيط التجارة الإقليمية",
+                "الدفاع عن الحدود البحرية شمالاً",
+                "تأسيس القضاء والنيابة العامة"
+            ],
+            answer:0
+        },
+
+        {
+            q:"ساهمت الموارد الطبيعية في مصر القديمة في:",
+            options:[
+                "استخراج المعادن وتنمية الزراعة والصناعة ودعم الاقتصاد",
+                "خروج الجيش للقتال خارج الحدود",
+                "سن القوانين التشريعية للبلاد",
+                "إنهاء النظام الملكي"
+            ],
+            answer:0
+        },
+
+        {
+            q:"توحد القطران في مصر القديمة على يد الملك:",
+            options:[
+                "أحمس",
+                "مينا (نعرمر)",
+                "رمسيس الثاني",
+                "تحتمس الثالث"
+            ],
+            answer:1
+        },
+
+        {
+            q:"قامت أول حكومة مركزية قوية في مصر القديمة بهدف:",
+            options:[
+                "تنظيم مياه النيل وإدارة شؤون البلاد وتحقيق الاستقرار",
+                "طرد الهكسوس والفرس",
+                "إنشاء أسطول بحري في البحر المتوسط",
+                "استيراد المعادن من الخارج"
+            ],
+            answer:0
+        },
+
+        {
+            q:"بدأ العصر الإسلامي في مصر بدخول المسلمين سنة:",
+            options:[
+                "525 ق.م",
+                "641 م",
+                "1952 م",
+                "1805 م"
+            ],
+            answer:1
+        },
+
+        {
+            q:"تعرضت مصر لعدة احتلالات أجنبية عبر تاريخها القديم مثل:",
+            options:[
+                "الهكسوس، الأشوريين، الفرس، اليونانيين، الرومان",
+                "المماليك، الأيوبيين، الفاطميين",
+                "الإنجليز والفرنسيين فقط",
+                "العباسيين والأمويين"
+            ],
+            answer:0
+        },
+
+        {
+            q:"يُعتبر مؤسس الدولة المصرية الحديثة والذي وضع أسس الدولة القوية هو:",
+            options:[
+                "الملك فاروق",
+                "محمد علي",
+                "جمال عبد الناصر",
+                "صلاح الدين الأيوبي"
+            ],
+            answer:1
+        },
+
+        {
+            q:"قامت ثورة 23 يوليو 1952 بإنجاز سياسي وتاريخي كبير يكمن في:",
+            options:[
+                "توحيد القطرين",
+                "إنهاء النظام الملكي وإعلان الجمهورية",
+                "الفتح الإسلامي لمصر",
+                "بناء الأهرامات"
+            ],
+            answer:1
+        },
+
+        {
+            q:"من أهم إنجازات محمد علي العسكرية لبناء دولة حديثة:",
+            options:[
+                "بناء الأهرامات والمعابد",
+                "إنشاء جيش حديث وأسطول بحري",
+                "سن دستور 1923",
+                "تنظيم الانتخابات النيابية"
+            ],
+            answer:1
+        },
+
+        {
+            q:"تهدف الدولة المصرية المعاصرة حالياً إلى:",
+            options:[
+                "ترسيخ المؤسسات الدستورية، تحقيق التنمية المستدامة، والحفاظ على الأمن القومي",
+                "بناء الدواوين والكتاتيب",
+                "التوسع العسكري الخارجي",
+                "إلغاء القوانين التشريعية"
+            ],
+            answer:0
+        }
+
+    ]
+}
+
+
+/*
+
+=========================================================
+مثال لإضافة امتحان جديد
+=========================================================
+
+ضع فاصلة بعد الامتحان السابق ثم انسخ الكود التالي:
+
+,
+
+{
+    id:"arabic-test-1",
+
+    icon:"📖",
+
+    subject:"اللغة العربية",
+
+    grade:"الصف الثاني الثانوي",
+
+    title:"اختبار النحو - الدرس الأول",
+
+    description:"اختبار على الدرس الأول في النحو.",
+
+    duration:20,
+
+    passPercent:60,
+
+    questions:[
+
+        {
+            q:"اكتب السؤال هنا",
+            options:[
+                "الإجابة الأولى",
+                "الإجابة الثانية",
+                "الإجابة الثالثة",
+                "الإجابة الرابعة"
+            ],
+            answer:0
+        },
+
+        {
+            q:"اكتب السؤال الثاني هنا",
+            options:[
+                "اختيار 1",
+                "اختيار 2",
+                "اختيار 3",
+                "اختيار 4"
+            ],
+            answer:2
+        }
+
+    ]
+}
+
+=========================================================
+
+answer:0 = الاختيار الأول
+answer:1 = الاختيار الثاني
+answer:2 = الاختيار الثالث
+answer:3 = الاختيار الرابع
+
+=========================================================
+
+*/
+
+];
+
+/* =========================================================
+   متغيرات النظام
+   ========================================================= */
+
+let selectedExam = null;
+
+let currentQuestion = 0;
+
+let userAnswers = [];
+
+let studentName = "";
+
+let finalScore = 0;
+
+let timerSeconds = 0;
+
+let timerInterval = null;
+
+/* =========================================================
+   الشاشات
+   ========================================================= */
+
+const screens = [
+    "homeScreen",
+    "nameScreen",
+    "quizScreen",
+    "resultScreen",
+    "reviewScreen",
+    "certificateScreen"
+];
+
+function showScreen(screenId){
+
+    screens.forEach(id=>{
+
+        document.getElementById(id).style.display =
+            id === screenId
+            ? "block"
+            : "none";
+
+    });
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+/* =========================================================
+   عرض الاختبارات
+   ========================================================= */
+
+function renderExams(){
+
+    const grid =
+        document.getElementById("examsGrid");
+
+    const search =
+        document
+        .getElementById("searchInput")
+        .value
+        .trim()
+        .toLowerCase();
+
+    grid.innerHTML="";
+
+    const filtered =
+        EXAMS.filter(exam=>{
+
+            const fullText =
+                (
+                    exam.title+
+                    " "+
+                    exam.subject+
+                    " "+
+                    exam.grade+
+                    " "+
+                    exam.description
+                ).toLowerCase();
+
+            return fullText.includes(search);
+
+        });
+
+    document.getElementById("examCount").innerText =
+        filtered.length+" اختبار";
+
+    document.getElementById("noExams").style.display =
+        filtered.length===0
+        ? "block"
+        : "none";
+
+    filtered.forEach(exam=>{
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "exam-card";
+
+        card.innerHTML = `
+
+            <div class="exam-card-icon">
+                ${exam.icon}
+            </div>
+
+            <div class="exam-subject">
+                ${exam.subject}
+                •
+                ${exam.grade}
+            </div>
+
+            <div class="exam-title">
+                ${exam.title}
+            </div>
+
+            <div class="exam-description">
+                ${exam.description}
+            </div>
+
+            <div class="exam-info">
+
+                <div>
+                    <strong>
+                        ${exam.questions.length}
+                    </strong>
+                    <span>
+                        سؤال
+                    </span>
+                </div>
+
+                <div>
+                    <strong>
+                        ${exam.duration}
+                    </strong>
+                    <span>
+                        دقيقة
+                    </span>
+                </div>
+
+                <div>
+                    <strong>
+                        ${exam.passPercent}%
+                    </strong>
+                    <span>
+                        النجاح
+                    </span>
+                </div>
+
+            </div>
+
+            <button
+                class="start-exam-btn"
+                onclick="selectExam('${exam.id}')">
+                ابدأ الاختبار ←
+            </button>
+
+        `;
+
+        grid.appendChild(card);
+
+    });
+
+}
+
+/* =========================================================
+   اختيار امتحان
+   ========================================================= */
+
+function selectExam(id){
+
+    selectedExam =
+        EXAMS.find(
+            exam=>exam.id===id
+        );
+
+    if(!selectedExam){
+        return;
+    }
+
+    document.getElementById(
+        "selectedExamIcon"
+    ).innerText =
+        selectedExam.icon;
+
+    document.getElementById(
+        "selectedExamTitle"
+    ).innerText =
+        selectedExam.title;
+
+    document.getElementById(
+        "selectedExamInfo"
+    ).innerText =
+        selectedExam.subject+
+        " • "+
+        selectedExam.grade+
+        " • "+
+        selectedExam.questions.length+
+        " سؤال";
+
+    showScreen("nameScreen");
+
+}
+
+/* =========================================================
+   بدء الاختبار
+   ========================================================= */
+
+function startQuiz(){
+
+    const input =
+        document.getElementById(
+            "studentName"
+        );
+
+    studentName =
+        input.value.trim();
+
+    if(!studentName){
+
+        alert(
+            "من فضلك اكتب اسم الطالب أولاً."
+        );
+
+        input.focus();
+
+        return;
+
+    }
+
+    if(!selectedExam){
+        return;
+    }
+
+    currentQuestion=0;
+
+    finalScore=0;
+
+    userAnswers =
+        new Array(
+            selectedExam.questions.length
+        ).fill(null);
+
+    timerSeconds =
+        selectedExam.duration*60;
+
+    showScreen("quizScreen");
+
+    startTimer();
+
+    showQuestion();
+
+}
+
+/* =========================================================
+   عرض السؤال
+   ========================================================= */
+
+function showQuestion(){
+
+    const q =
+        selectedExam.questions[
+            currentQuestion
+        ];
+
+    document.getElementById(
+        "questionText"
+    ).innerText =
+        q.q;
+
+    document.getElementById(
+        "questionNumber"
+    ).innerText =
+        "السؤال "+
+        String(
+            currentQuestion+1
+        ).padStart(2,"0");
+
+    document.getElementById(
+        "progressText"
+    ).innerText =
+        "السؤال "+
+        (currentQuestion+1)+
+        " من "+
+        selectedExam.questions.length;
+
+    const percent =
+        Math.round(
+            (
+                (currentQuestion+1) /
+                selectedExam.questions.length
+            )*100
+        );
+
+    document.getElementById(
+        "progressPercent"
+    ).innerText =
+        percent+"%";
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        percent+"%";
+
+    const options =
+        document.getElementById(
+            "options"
+        );
+
+    options.innerHTML="";
+
+    const letters=[
+        "أ",
+        "ب",
+        "ج",
+        "د",
+        "هـ"
+    ];
+
+    q.options.forEach(
+        (option,index)=>{
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+            div.className="option";
+
+            if(
+                userAnswers[
+                    currentQuestion
+                ]===index
+            ){
+
+                div.classList.add(
+                    "selected"
+                );
+
+            }
+
+            div.innerHTML=`
+
+                <div class="option-letter">
+                    ${letters[index] || index+1}
+                </div>
+
+                <div>
+                    ${option}
+                </div>
+
+            `;
+
+            div.onclick=()=>{
+
+                userAnswers[
+                    currentQuestion
+                ]=index;
+
+                showQuestion();
+
+            };
+
+            options.appendChild(div);
+
+        }
+    );
+
+    const nextButton =
+        document.getElementById(
+            "nextButton"
+        );
+
+    if(
+        currentQuestion ===
+        selectedExam.questions.length-1
+    ){
+
+        nextButton.innerText =
+            "إنهاء الاختبار ✓";
+
+    }else{
+
+        nextButton.innerText =
+            "التالي ←";
+
+    }
+
+}
+
+/* =========================================================
+   التالي
+   ========================================================= */
+
+function nextQuestion(){
+
+    if(
+        userAnswers[
+            currentQuestion
+        ]===null
+    ){
+
+        alert(
+            "اختر إجابة قبل الانتقال للسؤال التالي."
+        );
+
+        return;
+
+    }
+
+    if(
+        currentQuestion <
+        selectedExam.questions.length-1
+    ){
+
+        currentQuestion++;
+
+        showQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }else{
+
+        finishQuiz(false);
+
+    }
+
+}
+
+/* =========================================================
+   السابق
+   ========================================================= */
+
+function previousQuestion(){
+
+    if(currentQuestion>0){
+
+        currentQuestion--;
+
+        showQuestion();
+
+    }
+
+}
+
+/* =========================================================
+   انتهاء الاختبار
+   ========================================================= */
+
+function finishQuiz(timeEnded=false){
+
+    clearInterval(timerInterval);
+
+    let score=0;
+
+    selectedExam.questions.forEach(
+        (question,index)=>{
+
+            if(
+                userAnswers[index]===
+                question.answer
+            ){
+
+                score++;
+
+            }
+
+        }
+    );
+
+    finalScore=score;
+
+    const total =
+        selectedExam.questions.length;
+
+    const percent =
+        Math.round(
+            (score/total)*100
+        );
+
+    const wrong =
+        total-score;
+
+    document.getElementById(
+        "scorePercent"
+    ).innerText =
+        percent+"%";
+
+    document.getElementById(
+        "scoreText"
+    ).innerText =
+        score+
+        " إجابة صحيحة من "+
+        total;
+
+    document.getElementById(
+        "correctCount"
+    ).innerText =
+        score;
+
+    document.getElementById(
+        "wrongCount"
+    ).innerText =
+        wrong;
+
+    document.getElementById(
+        "finalPercentage"
+    ).innerText =
+        percent+"%";
+
+    let title="";
+    let message="";
+    let icon="🏆";
+
+    if(percent===100){
+
+        title=
+            "درجة كاملة! 🏆";
+
+        message=
+            "ممتاز يا "+
+            studentName+
+            "، لقد أجبت عن جميع الأسئلة بشكل صحيح.";
+
+        icon="👑";
+
+    }
+    else if(percent>=85){
+
+        title=
+            "ممتاز جداً! 🌟";
+
+        message=
+            "أداء رائع يا "+
+            studentName+
+            "، لديك فهم ممتاز للدرس.";
+
+        icon="🌟";
+
+    }
+    else if(percent>=70){
+
+        title=
+            "أحسنت! 👏";
+
+        message=
+            "نتيجة جيدة جداً، راجع الأسئلة التي أخطأت فيها للوصول إلى درجة أعلى.";
+
+        icon="👏";
+
+    }
+    else if(
+        percent>=
+        selectedExam.passPercent
+    ){
+
+        title=
+            "مبروك! ✅";
+
+        message=
+            "لقد اجتزت الاختبار بنجاح.";
+
+        icon="✅";
+
+    }
+    else{
+
+        title=
+            "تحتاج إلى مراجعة 📚";
+
+        message=
+            "راجع الدرس مرة أخرى ثم حاول حل الاختبار من جديد.";
+
+        icon="📚";
+
+    }
+
+    if(timeEnded){
+
+        message=
+            "انتهى وقت الاختبار. "+
+            message;
+
+    }
+
+    document.getElementById(
+        "resultTitle"
+    ).innerText =
+        title;
+
+    document.getElementById(
+        "resultMessage"
+    ).innerText =
+        message;
+
+    document.getElementById(
+        "resultIcon"
+    ).innerText =
+        icon;
+
+    document.getElementById(
+        "certificateButton"
+    ).style.display =
+        percent>=selectedExam.passPercent
+        ? "inline-block"
+        : "none";
+
+    showScreen("resultScreen");
+
+}
+
+/* =========================================================
+   TIMER
+   ========================================================= */
+
+function startTimer(){
+
+    clearInterval(timerInterval);
+
+    updateTimer();
+
+    timerInterval=
+        setInterval(()=>{
+
+            timerSeconds--;
+
+            if(timerSeconds<=0){
+
+                timerSeconds=0;
+
+                updateTimer();
+
+                clearInterval(
+                    timerInterval
+                );
+
+                finishQuiz(true);
+
+                return;
+
+            }
+
+            updateTimer();
+
+        },1000);
+
+}
+
+function updateTimer(){
+
+    const minutes =
+        Math.floor(
+            timerSeconds/60
+        );
+
+    const seconds =
+        timerSeconds%60;
+
+    const timer =
+        document.getElementById(
+            "timer"
+        );
+
+    timer.innerText =
+        "⏱️ "+
+        String(minutes).padStart(
+            2,
+            "0"
+        )+
+        ":"+
+        String(seconds).padStart(
+            2,
+            "0"
+        );
+
+    timer.classList.remove(
+        "warning",
+        "danger"
+    );
+
+    if(timerSeconds<=60){
+
+        timer.classList.add(
+            "danger"
+        );
+
+    }
+    else if(timerSeconds<=300){
+
+        timer.classList.add(
+            "warning"
+        );
+
+    }
+
+}
+
+/* =========================================================
+   مراجعة
+   ========================================================= */
+
+function showReview(){
+
+    const container =
+        document.getElementById(
+            "reviewContainer"
+        );
+
+    container.innerHTML="";
+
+    const letters=[
+        "أ",
+        "ب",
+        "ج",
+        "د",
+        "هـ"
+    ];
+
+    selectedExam.questions.forEach(
+        (q,index)=>{
+
+            const answer =
+                userAnswers[index];
+
+            const correct =
+                answer===q.answer;
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+            item.className =
+                "review-item "+
+                (
+                    correct
+                    ? "correct"
+                    : "wrong"
+                );
+
+            let html=`
+
+                <div class="review-question">
+                    ${index+1}. ${q.q}
+                </div>
+
+            `;
+
+            if(answer===null){
+
+                html+=`
+
+                    <div class="review-answer wrong-text">
+                        ✕ لم تتم الإجابة على السؤال.
+                    </div>
+
+                    <div class="review-answer correct-text">
+                        ✓ الإجابة الصحيحة:
+                        ${letters[q.answer]})
+                        ${q.options[q.answer]}
+                    </div>
+
+                `;
+
+            }
+            else if(correct){
+
+                html+=`
+
+                    <div class="review-answer correct-text">
+                        ✓ إجابتك صحيحة:
+                        ${letters[q.answer]})
+                        ${q.options[q.answer]}
+                    </div>
+
+                `;
+
+            }
+            else{
+
+                html+=`
+
+                    <div class="review-answer wrong-text">
+                        ✕ إجابتك:
+                        ${letters[answer]})
+                        ${q.options[answer]}
+                    </div>
+
+                    <div class="review-answer correct-text">
+                        ✓ الإجابة الصحيحة:
+                        ${letters[q.answer]})
+                        ${q.options[q.answer]}
+                    </div>
+
+                `;
+
+            }
+
+            item.innerHTML=html;
+
+            container.appendChild(item);
+
+        }
+    );
+
+    showScreen("reviewScreen");
+
+}
+
+/* =========================================================
+   النتيجة
+   ========================================================= */
+
+function backToResult(){
+
+    showScreen(
+        "resultScreen"
+    );
+
+}
+
+/* =========================================================
+   الشهادة
+   ========================================================= */
+
+function showCertificate(){
+
+    const percent =
+        Math.round(
+            (
+                finalScore /
+                selectedExam.questions.length
+            )*100
+        );
+
+    if(
+        percent<
+        selectedExam.passPercent
+    ){
+        return;
+    }
+
+    document.getElementById(
+        "certificateName"
+    ).innerText =
+        studentName;
+
+    document.getElementById(
+        "certificateCourse"
+    ).innerHTML =
+        `
+        قد اجتاز اختبار
+        ${selectedExam.subject}
+        <br>
+        <strong>
+            ${selectedExam.title}
+        </strong>
+        `;
+
+    document.getElementById(
+        "certificateScore"
+    ).innerText =
+        "النتيجة: "+
+        finalScore+
+        " / "+
+        selectedExam.questions.length+
+        " — "+
+        percent+
+        "%";
+
+    const date =
+        new Date().toLocaleDateString(
+            "ar-EG",
+            {
+                year:"numeric",
+                month:"long",
+                day:"numeric"
+            }
+        );
+
+    document.getElementById(
+        "certificateDate"
+    ).innerText =
+        "تاريخ الإصدار: "+
+        date;
+
+    showScreen(
+        "certificateScreen"
+    );
+
+}
+
+/* =========================================================
+   إعادة الاختبار
+   ========================================================= */
+
+function restartQuiz(){
+
+    clearInterval(
+        timerInterval
+    );
+
+    currentQuestion=0;
+
+    finalScore=0;
+
+    userAnswers =
+        new Array(
+            selectedExam.questions.length
+        ).fill(null);
+
+    timerSeconds =
+        selectedExam.duration*60;
+
+    showScreen(
+        "quizScreen"
+    );
+
+    startTimer();
+
+    showQuestion();
+
+}
+
+/* =========================================================
+   الصفحة الرئيسية
+   ========================================================= */
+
+function goHome(){
+
+    clearInterval(
+        timerInterval
+    );
+
+    selectedExam=null;
+
+    currentQuestion=0;
+
+    finalScore=0;
+
+    showScreen(
+        "homeScreen"
+    );
+
+    renderExams();
+
+}
+
+/* =========================================================
+   تشغيل الموقع
+   ========================================================= */
+
+renderExams();
+
+</script>
+
+</body>
+</html>
